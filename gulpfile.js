@@ -7,6 +7,9 @@ var gulp = require('gulp'),
     es = require('event-stream');
 
 var paths = {
+    sassDir: [
+        './app/public/stylesheets/**/*.scss'
+    ],
     sass: [
         './bower_components/foundation/scss/**/*.scss',
         './app/public/stylesheets/style.scss'
@@ -23,22 +26,12 @@ gulp.task('css', function() {
 
     return es.concat(appFiles)
         .pipe(concat('app.css'))
-        .pipe(gulp.dest('./public/css/'))
+        .pipe(gulp.dest('./app/public/stylesheets/'))
         .pipe(rename({ extname: '.min.css' }))
         .pipe(gulp.dest('./app/public/stylesheets/'))
         .on('error', gutil.log);
 });
 
-//gulp.task('clean-css', function() {
-//    return gulp.src('./public/css', { read: false })
-//        .pipe(clean());
-//});
-//
-//gulp.task('clean', function() {
-//    return gulp.src('./public/', { read: false })
-//        .pipe(clean({ force: true }));
-//});
-
-//gulp.task('watch', ['build'], function() {
-//    gulp.watch(paths.sassDir, ['css']);
-//});
+gulp.task('watch', ['build'], function() {
+    gulp.watch(paths.sassDir, ['css']);
+});

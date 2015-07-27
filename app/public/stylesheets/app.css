@@ -6637,4 +6637,8 @@ th {
   padding: 0; }
 
 body {
-  color: black; }
+  background: black;
+  color: white; }
+
+h1 {
+  color: white; }
