@@ -6,6 +6,8 @@ WORKDIR /src
 ADD . /src
 RUN npm install
 
+RUN npm install -g nodemon supervisor
+
 EXPOSE 3000
 
 CMD npm start
